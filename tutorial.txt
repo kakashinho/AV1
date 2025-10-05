@@ -1,0 +1,18 @@
+npm init -y
+npm install typescript ts-node @types/node --save-dev
+npm install readline-sync
+npm install chalk
+npx tsc --init
+
+tsconfig:
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": false,
+
+//rodar a aplicação
+ npx ts-node src/autoRunner.ts  #modo automático
+ npx ts-node src/index.ts       #modo manual
+
+npx tsc        # compila os .ts e gera arquivos .js em /dist
+node dist/index.js   # agora sim, isso funciona
