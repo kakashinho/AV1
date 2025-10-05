@@ -1,0 +1,32 @@
+# Node modules
+node_modules/
+
+# Diretório de saída do TypeScript
+dist/
+dados/
+
+# Arquivos de log
+*.log
+
+# Ambiente
+.env
+.env.*
+
+# Configurações do editor
+.vscode/
+.idea/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Cache do TypeScript
+*.tsbuildinfo
+
+# pacotes travados (caso use yarn ou pnpm)
+yarn.lock
+pnpm-lock.yaml
+
+# Arquivos temporários
+*.tmp
+*.swp
