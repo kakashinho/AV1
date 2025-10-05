@@ -1,0 +1,241 @@
+# Cadastro inicial do ADMIN
+1001
+João Silva
+(11) 99999-9999
+Rua Alpha, 123
+admin
+admin123
+
+# Menu Inicial -> Login
+1
+admin
+admin123
+
+# === Menu Principal (ADMIN) ===
+# Gerenciar Funcionários
+2
+
+# Cadastrar Funcionário 1 - ERRO nível inválido
+1
+1002
+Maria Souza
+(21) 98888-7777
+Rua Beta, 456
+maria
+maria123
+ENGENHERO
+
+# Tentativa inválida, volta ao menu funcionários
+
+# Cadastrar Funcionário 1 - CORRETO
+1
+1002
+Maria Souza
+(21) 98888-7777
+Rua Beta, 456
+maria
+maria123
+ENGENHEIRO
+
+# Salvar Funcionários
+4
+
+# Cadastrar Funcionário 2
+1
+1003
+Carlos Mendes
+(31) 97777-6666
+Rua Gama, 789
+carlos
+carlos123
+OPERADOR
+
+# Salvar Funcionários
+4
+
+# Cadastrar Funcionário 3
+1
+1004
+Ana Pereira
+(41) 96666-5555
+Rua Delta, 101
+ana
+ana123
+OPERADOR
+
+# Salvar Funcionários
+4
+
+# Voltar ao menu principal
+0
+
+# === Menu Principal ===
+# Gerenciar Aeronaves
+1
+
+# Cadastrar Aeronave
+1
+A001
+Falcon X
+COMERCIAL
+180
+5000
+
+# Salvar Aeronaves
+6
+
+# Voltar ao menu principal
+0
+
+# === Menu Principal ===
+# Gerenciar Peças
+3
+
+# Cadastrar Peça 1
+1
+Motor Turbo A
+TurbineCorp
+IMPORTADA
+EM_PRODUCAO
+
+# Salvar Peças
+4
+
+# Cadastrar Peça 2
+1
+Asa Lateral
+WingMakers
+NACIONAL
+PRONTA
+
+# Salvar Peças
+4
+
+# Voltar ao menu principal
+0
+
+# === Menu Principal ===
+# Gerenciar Etapas
+4
+
+# Cadastrar Etapa 1
+1
+Montagem Estrutural
+2025-11-01
+
+# Salvar Etapas
+7
+
+# Cadastrar Etapa 2
+1
+Instalação de Sistemas
+2025-11-15
+
+# Salvar Etapas
+7
+
+# Associar Funcionários à Etapa 1
+5
+1
+2
+5
+1
+3
+
+# Salvar Etapas
+7
+
+# Associar Funcionários à Etapa 2
+5
+2
+4
+
+# Salvar Etapas
+7
+
+# Voltar ao menu principal
+0
+
+# === Menu Principal ===
+# Gerenciar Testes
+5
+
+# Cadastrar Teste 1 (ELETRICO)
+1
+1
+
+# Salvar Testes
+4
+
+# Cadastrar Teste 2 (HIDRAULICO)
+1
+2
+
+# Salvar Testes
+4
+
+# Voltar ao Menu Principal
+0
+
+# === Menu Principal ===
+# Gerenciar Aeronaves
+1
+
+# Editar Peças da Aeronave A001
+7
+A001
+1
+1
+2
+0
+
+# Salvar Aeronaves
+6
+
+# Editar Etapas da Aeronave A001
+8
+A001
+1
+1
+2
+0
+
+# Salvar Aeronaves
+6
+
+# Editar Testes da Aeronave A001
+9
+A001
+1
+1
+2
+0
+
+# Salvar Aeronaves
+6
+
+# Atualizar Resultado do Teste 1 da Aeronave A001
+9
+A001
+3
+1
+APROVADO
+0
+
+# Gerar Relatório da Aeronave
+10
+A001
+Empresa XPTO
+2025-12-20
+
+# Voltar ao menu aeronaves
+0
+
+# Voltar ao menu principal
+0
+
+# Logout
+0
+
+# Encerrar:
+0
