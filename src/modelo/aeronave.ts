@@ -56,8 +56,23 @@ export class Aeronave {
   }
 
   detalhes(): string {
-    const detalhesPecas = this.pecas.length > 0 ? this.pecas.map(p => `    - ${p.peca.nome} | Tipo: ${p.peca.tipo} | Fornecedor: ${p.peca.fornecedor} | Status: ${p.peca.status} | Quantidade: ${p.quantidade}`).join("\n")
-    : "    Nenhuma peça cadastrada."
+    const detalhesPecas = this.pecas.length > 0 ? this.pecas.map(p => `\n            - ${p.peca.nome} | Tipo: ${p.peca.tipo} | Fornecedor: ${p.peca.fornecedor} | Status: ${p.peca.status} | Quantidade: ${p.quantidade}`)
+    : " Nenhuma peça cadastrada."
+
+    const detalhesEtapas = this.etapas.length > 0
+    ? this.etapas.map(e => {
+        const funcionarios = e.funcionarios.length > 0 
+          ? e.funcionarios.map(f => f.nome).join(", ") 
+          : "Nenhum funcionário associado"
+        return `\n            - ${e.nome} | Prazo: ${e.prazo.toLocaleDateString()} | Status: ${e.status} | Funcionários: ${funcionarios}`
+      })
+    : " Nenhuma etapa cadastrada."
+
+  const detalhesTestes = this.testes.length > 0
+    ? this.testes.map(t => 
+        `\n            - Tipo: ${t.tipo} | Resultado: ${t.resultado ?? "Não registrado"}`
+      )
+    : " Nenhum teste cadastrado."
 
     
     return `
@@ -67,8 +82,8 @@ export class Aeronave {
       Capacidade: ${this.capacidade}
       Alcance: ${this.alcance}
       Peças: ${detalhesPecas}
-      Etapas: ${this.etapas.length}
-      Testes: ${this.testes.length}
+      Etapas: ${detalhesEtapas}
+      Testes: ${detalhesTestes}
     `
   }
 }
