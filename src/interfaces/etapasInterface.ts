@@ -172,45 +172,53 @@ async function editarEtapasDaAeronave(aeronave: Aeronave, todasAeronaves: Aerona
       console.log("Alterações salvas com sucesso.")
     }
 
-else if (opcao === "4") {
-  if (!aeronave.etapas || aeronave.etapas.length === 0) {
-    console.log("Nenhuma etapa para atualizar o status.")
-    continue
-  }
+    else if (opcao === "4") {
+      if (!aeronave.etapas || aeronave.etapas.length === 0) {
+        console.log("Nenhuma etapa para atualizar o status.")
+        continue
+      }
 
-  aeronave.etapas.forEach((etapa, i) =>
-    console.log(`${i + 1} - ${etapa.nome} | Status atual: ${etapa.status}`)
-  )
-  
-  const idx = parseInt((await perguntar("Número da etapa para atualizar o status: ")).trim(), 10) - 1
-  if (isNaN(idx) || idx < 0 || idx >= aeronave.etapas.length) {
-    console.log("Índice inválido.")
-    continue
-  }
+      aeronave.etapas.forEach((etapa, i) =>
+        console.log(`${i + 1} - ${etapa.nome} | Status atual: ${etapa.status}`)
+      )
+      
+      const idx = parseInt((await perguntar("Número da etapa para atualizar o status: ")).trim(), 10) - 1
+      if (isNaN(idx) || idx < 0 || idx >= aeronave.etapas.length) {
+        console.log("Índice inválido.")
+        continue
+      }
 
-  const statusValores = Object.values(StatusEtapa)
-  console.log("Status disponíveis:")
-  statusValores.forEach((status, i) => {
-    console.log(`${i + 1} - ${status}`)
-  })
+      const statusValores = Object.values(StatusEtapa)
+      console.log("Status disponíveis:")
+      statusValores.forEach((status, i) => {
+        console.log(`${i + 1} - ${status}`)
+      })
 
-  const statusIdx = parseInt((await perguntar("Escolha o novo status: ")).trim(), 10) - 1
-  if (isNaN(statusIdx) || statusIdx < 0 || statusIdx >= statusValores.length) {
-    console.log("Status inválido.")
-    continue
-  }
+      const statusIdx = parseInt((await perguntar("Escolha o novo status: ")).trim(), 10) - 1
+      if (isNaN(statusIdx) || statusIdx < 0 || statusIdx >= statusValores.length) {
+        console.log("Status inválido.")
+        continue
+      }
 
-  const etapaSelecionada = aeronave.etapas[idx]!
-  if ("atualizarStatus" in etapaSelecionada && typeof etapaSelecionada.atualizarStatus === "function") {
-    etapaSelecionada.atualizarStatus(statusValores[statusIdx])
-  } else {
-    etapaSelecionada.status = statusValores[statusIdx]!
-  }
+      const etapaSelecionada = aeronave.etapas[idx]!
+      const novoStatus = statusValores[statusIdx]!
 
-  salvarDados("./src/dados/aeronaves.txt", todasAeronaves)
-  console.log(`Status da etapa "${etapaSelecionada.nome}" atualizado para "${statusValores[statusIdx]}".`)
-}
+      if (novoStatus === StatusEtapa.ANDAMENTO || novoStatus === StatusEtapa.CONCLUIDA) {
+        const indiceAnterior = idx - 1
+        if (indiceAnterior >= 0) {
+          const etapaAnterior = aeronave.etapas[indiceAnterior]!
+          if (etapaAnterior.status !== StatusEtapa.CONCLUIDA) {
+            console.log(`\nERRO: Para prosseguir com a etapa "${etapaSelecionada.nome}", a etapa anterior ("${etapaAnterior.nome}") deve estar CONCLUÍDA.`)
+            continue
+          }
+        }
+      }
 
+      etapaSelecionada.status = novoStatus
+
+      salvarDados("./src/dados/aeronaves.txt", todasAeronaves)
+      console.log(`Status da etapa "${etapaSelecionada.nome}" atualizado para "${novoStatus}".`)
+    }
 
     else {
       console.log("Opção inválida.")
