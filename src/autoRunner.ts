@@ -47,7 +47,7 @@ const sendNextInput = () => {
 };
 
 
-setTimeout(sendNextInput, 2000);
+setTimeout(sendNextInput, 5000);
 
 child.on('close', (code) => {
   console.log(`\nProcesso encerrado com código ${code}`);
